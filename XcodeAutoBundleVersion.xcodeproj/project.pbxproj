@@ -192,7 +192,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "sh Version.sh\ninfoPlistGlob=\"$PROJECT_DIR/*.plist\"\ntouch $infoPlistGlob\necho \"touched\"";
+			shellScript = "sh Version.sh";
 		};
 /* End PBXShellScriptBuildPhase section */
 

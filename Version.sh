@@ -20,3 +20,6 @@ fi
 
 echo "#define BUILD_NUMBER ${BUILD_NUMBER}" > ${VERSION_FILE}
 echo "#define BUILD_HASH @\"${BUILD_HASH}\"" >> ${VERSION_FILE}
+
+PLIST_MASK=${PROJECT_DIR}/*.plist
+touch $PLIST_MASK
