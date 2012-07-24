@@ -192,7 +192,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "sh Version.sh";
+			shellScript = "/bin/sh Version.sh \"${PROJECT_DIR}/Version.h\"";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
