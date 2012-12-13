@@ -192,7 +192,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh Version.sh \"${PROJECT_DIR}/Version.h\"";
+			shellScript = "GIT_BRANCH=\"master\" PREFIX=\"XC_\" /bin/sh \"${PROJECT_DIR}/Version.sh\" \"${PROJECT_DIR}/Version.h\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

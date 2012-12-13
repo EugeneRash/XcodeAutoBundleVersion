@@ -4,8 +4,8 @@ if [ -z "${PROJECT_DIR}" ]; then
 	PROJECT_DIR=`pwd`
 fi
 
-if [ -z "${VARS_PREFIX}" ]; then
-	VARS_PREFIX=""
+if [ -z "${PREFIX}" ]; then
+	PREFIX=""
 fi
 
 SVN_DIR="${PROJECT_DIR}/.svn"
@@ -33,8 +33,8 @@ if [ -z "$1" ]; then
 		echo "${BUILD_NUMBER}/${BUILD_HASH}"
 	fi
 else
-	echo "#define ${VARS_PREFIX}BUILD_NUMBER ${BUILD_NUMBER}" > $1
-	echo "#define ${VARS_PREFIX}BUILD_HASH @\"${BUILD_HASH}\"" >> $1
+	echo "#define ${PREFIX}BUILD_NUMBER ${BUILD_NUMBER}" > $1
+	echo "#define ${PREFIX}BUILD_HASH @\"${BUILD_HASH}\"" >> $1
 
 	find "${PROJECT_DIR}" -iname "*.plist" -maxdepth 1 -exec touch {} \;	
 fi

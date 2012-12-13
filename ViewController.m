@@ -25,8 +25,8 @@
 	NSString *v2 = [bundle objectForInfoDictionaryKey:@"CFBundleVersion"];
 	NSString *v3 = @"";
 	
-#ifdef BUILD_HASH
-	v3 = BUILD_HASH;
+#ifdef XC_BUILD_HASH
+	v3 = XC_BUILD_HASH;
 #endif
 	
 	self.versionLabel.text = [NSString stringWithFormat:@"%@ (%@/%@)", v1, v2, v3];
