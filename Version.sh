@@ -10,6 +10,8 @@ fi
 
 SVN_DIR="${PROJECT_DIR}/.svn"
 GIT_DIR="${PROJECT_DIR}/.git"
+PLIST_PATH=`find "${PROJECT_DIR}/$2" -iname '*.plist' -maxdepth 1`
+BASE_APP_VER=`/usr/libexec/PlistBuddy ${PLIST_PATH} -c "print CFBundleShortVersionString"`
 
 if [ -d "${GIT_DIR}" ]; then
 	if [ -z "${GIT_BRANCH}" ]; then
@@ -21,6 +23,7 @@ if [ -d "${GIT_DIR}" ]; then
 elif [ -d "${SVN_DIR}" ]; then
 	BUILD_NUMBER=`xcrun svnversion -nc "${PROJECT_DIR}" | sed -e 's/^[^:]*://;s/[A-Za-z]//' | tr -d ' '`
 	BUILD_HASH="${BUILD_NUMBER}"
+
 else 
 	BUILD_NUMBER="1"
 	BUILD_HASH="1"
@@ -33,8 +36,10 @@ if [ -z "$1" ]; then
 		echo "${BUILD_NUMBER}/${BUILD_HASH}"
 	fi
 else
-	echo "#define ${PREFIX}BUILD_NUMBER ${BUILD_NUMBER}" > $1
+	
+	echo "#define ${PREFIX}BUILD_NUMBER ${BASE_APP_VER}.${BUILD_NUMBER}" > $1
 	echo "#define ${PREFIX}BUILD_HASH @\"${BUILD_HASH}\"" >> $1
+
 
 	find "${PROJECT_DIR}" -iname "*.plist" -maxdepth 1 -exec touch {} \;	
 fi
